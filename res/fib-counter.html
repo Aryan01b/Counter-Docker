@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fibonacci Counter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .fibonacci {
+            font-size: 24px;
+            margin: 20px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            min-height: 36px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Fibonacci Counter</h1>
+        <div class="fibonacci" id="fibonacci">0</div>
+        <div>
+            <button onclick="getNextFibonacci()">Next Fibonacci Number</button>
+            <button onclick="resetCounter()">Reset</button>
+        </div>
+    </div>
+
+    <script>
+        let count = 0;
+        let fibNumbers = [0, 1];
+
+        function updateDisplay() {
+            document.getElementById("fibonacci").textContent = fibNumbers[count];
+        }
+
+        function getNextFibonacci() {
+            count++;
+            if (count >= fibNumbers.length) {
+                fibNumbers.push(fibNumbers[count-1] + fibNumbers[count-2]);
+            }
+            updateDisplay();
+        }
+
+        function resetCounter() {
+            count = 0;
+            fibNumbers = [0, 1];
+            updateDisplay();
+        }
+
+        // Initialize display
+        updateDisplay();
+    </script>
+</body>
+</html>
